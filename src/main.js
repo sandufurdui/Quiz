@@ -1,13 +1,13 @@
 import React, { Component } from 'react'
-import "./main.css"
-import Test from "./test"
+import "./style/main.css"
+import Quiz from "./components/quiz"
 
 export class main extends Component {
   render() {
     return (
       <div>
           <div class="main_div">
-            <Test />
+            <Quiz />
           </div>
       </div>
     )

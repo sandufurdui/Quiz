@@ -1,6 +1,9 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@500&display=swap');
+
 html, body {
     margin: 0px !important;
     padding: 0px !important;
+    font-family: 'Open Sans', sans-serif;
 }
 html {
     overflow: scroll;
@@ -18,7 +21,7 @@ html {
     /* width: 100vw; */
     min-height: 100vh;
     background-color: red;
-    background-image: url("./assets/quiz-bg.png");
+    background-image: url("../assets/quiz-bg.png");
     background-repeat: no-repeat;
     background-size: cover;
     background-position: bottom;
@@ -45,7 +48,17 @@ html {
     /* color: white; */
 }
 
-.question{
+#question{
+    margin-top: 20px;
+    text-align: center;
     font-size: 40px !important;
-    color: red;
+    color:white;
 }
+.options{
+    margin-top: 20px;
+    text-align: center;
+}
+
+
+
+  
