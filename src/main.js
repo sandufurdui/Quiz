@@ -6,7 +6,7 @@ export class main extends Component {
   render() {
     return (
       <div>
-          <div class="main_div">
+          <div className="main_div">
             <Quiz />
           </div>
       </div>
