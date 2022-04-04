@@ -17,7 +17,7 @@ html {
     background: #FF0000;
 }
 
-.main_div{
+body{
     /* width: 100vw; */
     min-height: 100vh;
     background-color: red;
@@ -28,14 +28,6 @@ html {
     background-repeat: no-repeat;
     background-attachment: fixed;
     color: white;
-    /* font-size: 75px; */
-    /* background: yellow; */
-    width: 100%;
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: center;
 }
 
 .quiz_div{
