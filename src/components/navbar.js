@@ -6,6 +6,7 @@ import Dashboard from "./dashboard"
 import Login from './login'
 import Main from "./main"
 import About from "./about"
+import Music from "./musicPlayer"
 import "../style/navbar.css"
 
 function Navbar({ logged }) {
@@ -19,6 +20,7 @@ function Navbar({ logged }) {
                 {user ? <Link className="link" component={Dashboard} to="/dashboard">Dashboard</Link> :
                     <Link className="link" component={Login} to="/login">Log In</Link>}
                 {user ? <Link className="link" to="/"><span onClick={logout}>Log Out</span></Link> : null}
+                <Music />
             </ul>
         </div>
     )

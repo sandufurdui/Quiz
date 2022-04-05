@@ -12,10 +12,13 @@ function Dashboard() {
   // const [name, setName] = useState("");
   const history = useNavigate();
 
-  // useEffect(() => {
-  //   if (loading) return;
-  //   if (!user) return history("/");
-  // }, [user, loading]);
+  useEffect(() => {
+    // if (loading) return;
+    if (!user) return history("/login");
+  }, [
+    user, 
+    // loading
+  ]);
 
 
   return (
@@ -26,7 +29,9 @@ function Dashboard() {
           <>this is dashbrd component</>
         </div>
       ) : (
-        <Login />
+        <div>
+          
+        </div>
       )}
     </div>
   );

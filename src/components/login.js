@@ -21,36 +21,41 @@ function Login() {
 
 
   return (
-
-    <div className="">
-      <Navbar />
-      <div className="form">
-        <h3>Login Here</h3>
-
-        <label>Username</label>
-        <input
-          type="text"
-          placeholder="enter your username"
-          value={email} onChange={(e) => setEmail(e.target.value)}
-          onKeyPress={event => {
-            if (event.key === 'Enter') {
-              signInWithEmailAndPassword(email + '@gmail.com', password)
-            }
-          }} />
-
-        <label>Password</label>
-        <input
-          type="password"
-          placeholder="enter your password"
-          value={password} onChange={(e) => setPassword(e.target.value)}
-          onKeyPress={event => {
-            if (event.key === 'Enter') {
-              signInWithEmailAndPassword(email + '@gmail.com', password)
-            }
-          }} />
-
-        <button className="login_button" onClick={() => signInWithEmailAndPassword(email + '@gmail.com', password)}>Log In</button>
-      </div>
+    <div>
+      {user ? (
+        <div className="">
+        </div>
+      ) : (
+        <div>
+          <div className="">
+            <Navbar />
+            <div className="form">
+              <h3>Login Here</h3>
+              <label>Username</label>
+              <input
+                type="text"
+                placeholder="enter your username"
+                value={email} onChange={(e) => setEmail(e.target.value)}
+                onKeyPress={event => {
+                  if (event.key === 'Enter') {
+                    signInWithEmailAndPassword(email + '@gmail.com', password)
+                  }
+                }} />
+              <label>Password</label>
+              <input
+                type="password"
+                placeholder="enter your password"
+                value={password} onChange={(e) => setPassword(e.target.value)}
+                onKeyPress={event => {
+                  if (event.key === 'Enter') {
+                    signInWithEmailAndPassword(email + '@gmail.com', password)
+                  }
+                }} />
+              <button className="login_button" onClick={() => signInWithEmailAndPassword(email + '@gmail.com', password)}>Log In</button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }

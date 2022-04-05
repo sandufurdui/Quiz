@@ -5,22 +5,26 @@ html, body {
     padding: 0px !important;
     font-family: 'Open Sans', sans-serif;
 }
+
 html {
     overflow: scroll;
     overflow-x: hidden;
 }
+
 ::-webkit-scrollbar {
-    width: 0;  /* Remove scrollbar space */
-    background: transparent;  /* Optional: just make scrollbar invisible */
+    width: 0;
+    /* Remove scrollbar space */
+    background: transparent;
+    /* Optional: just make scrollbar invisible */
 }
+
 ::-webkit-scrollbar-thumb {
     background: #FF0000;
 }
 
-body{
+body {
     /* width: 100vw; */
     min-height: 100vh;
-    background-color: red;
     background-image: url("../assets/quiz-bg.png");
     background-repeat: no-repeat;
     background-size: cover;
@@ -30,14 +34,13 @@ body{
     color: white;
 }
 
-.quiz_div{
+/* .quiz_div{
     width: 40vw;
     min-height: 190px;
-    /* margin: 10px; */
     padding: 10px 30px;
     border-radius: 30px;
     background: rgba(255, 255, 255, 0.4);
-    /* color: white; */
+ 
 }
 
 #question{
@@ -49,8 +52,28 @@ body{
 .options{
     margin-top: 20px;
     text-align: center;
+} */
+
+
+.main_container {
+    margin-top: 50px;
+    /* background-color: lightseagreen; */
+    min-height: 100px;
+
 }
 
+.row {
+    display: grid;
+    grid-template-columns: 24% 24% 24% 24%;
+    padding: 10px 150px;
+    column-gap: 20px;
+    margin-top: 50px;
+}
 
-
-  
+.grid-item {
+    /* background-color: rgba(255, 255, 255, 0.8); */
+    /* border: 1px solid rgba(0, 0, 0, 0.8); */
+    padding: 20px;
+    /* font-size: 30px; */
+    text-align: center;
+}
