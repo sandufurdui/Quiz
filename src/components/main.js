@@ -3,6 +3,7 @@ import React, { Component } from 'react'
 import Quiz from "./quiz"
 import Card from "./quizCard"
 import Navbar from "./navbar"
+import Get from "../hooks/getQuiz"
 
 
 export class main extends Component {
@@ -26,6 +27,8 @@ export class main extends Component {
             <div className="grid-item">
               <Card />
             </div>
+            {/* <Test /> */}
+            {/* <Get id= "1" /> */}
           </div>
         </div>
       </div>

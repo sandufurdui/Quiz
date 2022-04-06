@@ -4,7 +4,7 @@ import Login from "./components/login";
 import Dashboard from "./components/dashboard";
 import Main from "./components/main"
 import About from "./components/about"
-// import Test from './test'
+import Get from './hooks/getQuiz'
 function App() {
   return (
     <div>
@@ -17,6 +17,7 @@ function App() {
           <Route path="/about" element={<About />}></Route>
           <Route path="/dashboard" element={<Dashboard />}></Route>
         </Routes>
+        {/* <Get id= "1" /> */}
       </Router>
     </div>
   );

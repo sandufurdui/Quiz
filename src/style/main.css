@@ -19,7 +19,7 @@ html {
 }
 
 ::-webkit-scrollbar-thumb {
-    background: #FF0000;
+    background: #ff000000;
 }
 
 body {

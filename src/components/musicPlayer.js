@@ -24,7 +24,6 @@ class musicPlayer extends React.Component {
     }
 
     render() {
-
         return (
             <div>
                 <button className="link" onClick={this.toogle}>{this.state.play ? <div>Pause</div> : <div>Play</div>}</button>
@@ -33,5 +32,4 @@ class musicPlayer extends React.Component {
     }
 }
 
-// export play;
 export default musicPlayer

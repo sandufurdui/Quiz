@@ -14,11 +14,11 @@ function Navbar({ logged }) {
     return (
         <div className="navbar_container">
             <ul className="menu-bar">
-                <Link className="link" component={Main} to="/">Home</Link>
-                <Link className="link" component={About} to="/about">About</Link>
+                <Link className="link"  to="/">Home</Link>
+                <Link className="link"  to="/about">About</Link>
                 {/* <Link className="link" component={Dashboard} to="/dashboard">Dashboard1</Link> */}
-                {user ? <Link className="link" component={Dashboard} to="/dashboard">Dashboard</Link> :
-                    <Link className="link" component={Login} to="/login">Log In</Link>}
+                {user ? <Link className="link"  to="/dashboard">Dashboard</Link> :
+                    <Link className="link"  to="/login">Log In</Link>}
                 {user ? <Link className="link" to="/"><span onClick={logout}>Log Out</span></Link> : null}
                 <Music />
             </ul>
