@@ -5,8 +5,9 @@ export class about extends Component {
   render() {
     return (
       <div>
-          <Navbar />
-          this is about component</div>
+        <Navbar />
+        
+      </div>
     )
   }
 }

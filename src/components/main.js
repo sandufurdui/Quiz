@@ -43,9 +43,9 @@ export class main extends Component {
 
 
   render() {
-    const fields = [];
+    const quizes = [];
     for (let i = 1; i <= this.state.num; i++) {
-      fields.push(<div className="grid-item"><Card id={i} /></div>);
+      quizes.push(<div className="grid-item"><Card id={i} /></div>);
     }
     // console.log(this.state.numOfQuizes)
     return (
@@ -55,22 +55,13 @@ export class main extends Component {
         </div>
         <div className="main_container">
           <div className="row">
-            {fields}
+            {quizes}
 
-            {/* <div className="grid-item">
-               <Card id={k++} />
-            </div>
-            <div className="grid-item">
-              <Card id={this.state.id++} />
-            </div>
-            <div className="grid-item">
-              <Card id={this.state.id} />
-            </div> */}
-            {/* <Submit id="9" />  */}
+            <Submit id="1" /> 
           </div>
 
         </div>
-        {/* <GetData id="lol"/> */}
+
       </div>
     )
   }

@@ -1,7 +1,8 @@
-import React, { Component, useEffect } from 'react'
+import React, { Component, useState ,useEffect } from 'react'
 import "../style/card.css"
 import { getDatabase, ref, set, child, get } from "firebase/database";
 import quiz from './quiz';
+import StartQuiz from "./startQuiz"
 // import { useEffect } from "react"
 
 export class quizCard extends Component {
@@ -68,34 +69,14 @@ export class quizCard extends Component {
         // console.log("number of questions: " + this.state.numberOfQuestions)
     }
 
-    // assignValues = async () => {
-    //     try {
-    //         await this.getData()
-    //         this.setState({
-    //             title: this.state.quiz.title,
-    //             description: this.state.quiz.description,
-    //             // numberOfQuestions: this.state.quiz.questions.size,
-    //             display: this.state.quiz.display,
-    //             done: true
-    //         })
-    //     } catch (e) {
-    //         console.log(e)
-    //     }
-    //     console.log(this.state.title)
-    //     console.log(this.state.description)
-    // }
 
     componentDidMount = async () => {
         console.log("card with id " + this.state.id + " mounted")
         this.getData()
     }
 
-    // componentDidUpdate() {
-    //     console.log('updated');
-    //     this.getData()
-    //   }
-
     render() {
+
         return (
             <div >
                 {this.state.done && this.state.display ?
@@ -106,11 +87,7 @@ export class quizCard extends Component {
                         </div>
                         {/* <Test /> */}
                         <div className="card-contains card-grid-item">
-                            <button className="link start-quiz"
-                                // onClick={this.getData}
-                            >
-                                Start quiz
-                            </button>
+                            <StartQuiz id={this.state.id} quiz={this.state.quiz} length={this.state.numberOfQuestions} title={this.state.quiz.title} description={this.state.description}/>
                         </div>
                     </div> :
                     null
