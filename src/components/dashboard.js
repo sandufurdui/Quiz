@@ -48,8 +48,8 @@ function Dashboard() {
               </div> */}
             </div>
           </div>
-          <Submit id="1" />
-          <Get id="1" />
+          <Submit id="lol" />
+          {/* <Get id="second" /> */}
         </div>
 
       ) : (

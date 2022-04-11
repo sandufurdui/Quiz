@@ -3,7 +3,8 @@ import React, { Component } from 'react'
 import Quiz from "./quiz"
 import Card from "./quizCard"
 import Navbar from "./navbar"
-import Get from "../hooks/getQuiz"
+import GetData from "../hooks/getQuiz"
+import Submit from "../hooks/submitQuiz"
 
 
 export class main extends Component {
@@ -16,21 +17,21 @@ export class main extends Component {
         <div className="main_container">
           <div className="row">
             <div className="grid-item">
-              <Card />
+              <Card id = "1"/>
             </div>
             <div className="grid-item">
-              <Card />
+              {/* <Card /> */}
             </div>
             <div className="grid-item">
-              <Card />
+              {/* <Card /> */}
             </div>
             <div className="grid-item">
-              <Card />
+              {/* <Card /> */}
             </div>
-            {/* <Test /> */}
-            {/* <Get id= "1" /> */}
+            <Submit id="1" />
           </div>
         </div>
+        {/* <GetData id="lol"/> */}
       </div>
     )
   }

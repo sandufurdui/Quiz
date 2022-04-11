@@ -11,7 +11,8 @@ function submitQuiz(props) {
                 "category": "Math",
                 "difficulty": 11,
                 "display": true,
-                "title": "Elementary Math Quiz",
+                "title": "Math Quiz",
+                "description": "This is a elementary math quiz originally, but now its a sh*t",
                 "questions": [{
                     "question": "5 x 4 =",
                     "answers":

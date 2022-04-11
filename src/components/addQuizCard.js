@@ -60,6 +60,8 @@ function AddQuizCard() {
                                 <p>Please fill all the fields bellow in order to add new quiz</p><br />
                                 <h4>Give the quiz a title</h4>
                                 <input /><br />
+                                <h4>Add some description</h4>
+                                <input /><br />
                                 <h4>Select a category for it</h4>
                                 <input /><br />
                                 <h4>Dificulty</h4>

@@ -21,9 +21,11 @@ const firebaseConfig = {
   databaseURL: " https://quiz-e4a2a-default-rtdb.europe-west1.firebasedatabase.app",
 };
 const app = firebase.initializeApp(firebaseConfig);
+// const firebase = firebase.initializeApp(firebaseConfig);
 const auth = app.auth();
 const db = app.firestore();
 const googleProvider = new firebase.auth.GoogleAuthProvider();
+// var functions = firebase.functions();
 
 const signInWithEmailAndPassword = async (email, password) => {
   try {
@@ -52,6 +54,8 @@ export {
   app,
   auth,
   db,
+  
+  // functions,
   // signInWithGoogle,
   signInWithEmailAndPassword,
   // registerWithEmailAndPassword,
