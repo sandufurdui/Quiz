@@ -9,7 +9,7 @@ export class quizCard extends Component {
         super(props);
         this.state = {
             quiz: [],
-            id: "1",
+            id: this.props.id,
             title: "",
             description: "",
             dificulty: 0,
@@ -62,10 +62,10 @@ export class quizCard extends Component {
             display: this.state.quiz.display,
             done: true
         })
-        console.log("quiz data " + this.state.quiz)
-        console.log("description: " + this.state.quiz.description)
-        console.log("display: " +this.state.quiz.display)
-        console.log("number of questions: " + this.state.numberOfQuestions)
+        // console.log("quiz data " + this.state.quiz)
+        // console.log("description: " + this.state.quiz.description)
+        // console.log("display: " +this.state.quiz.display)
+        // console.log("number of questions: " + this.state.numberOfQuestions)
     }
 
     // assignValues = async () => {
