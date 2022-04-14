@@ -11,12 +11,15 @@ function Login() {
   const [user, loading, error] = useAuthState(auth);
   const history = useNavigate();
   useEffect(() => {
-    if (loading) {
-      // maybe trigger a loading screen
-      return;
-    }
+    // if (loading) {
+    //   // maybe trigger a loading screen
+    //   return;
+    // }
     if (user) history("/dashboard");
-  }, [user, loading]);
+  }, [
+    user, 
+    // loading
+  ]);
 
 
 

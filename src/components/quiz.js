@@ -1,7 +1,7 @@
-import React, { Component, useState } from 'react'
+import React, { Component } from 'react'
 import "../style/main.css"
 import "../style/quiz.css"
-import { getDatabase, ref, set, child, get } from "firebase/database";
+import { getDatabase, ref, child, get } from "firebase/database";
 
 import Question from './question'
 
@@ -24,7 +24,7 @@ export class quiz extends Component {
         this.setState({
           quiz: dd,
         })
-        console.log(this.state.quiz)
+        // console.log(this.state.quiz)
       } else {
         console.log("No data available");
       }
@@ -54,12 +54,13 @@ export class quiz extends Component {
 
   render() {
     const {
-      quiz, index, answers
+      quiz, index
     } = this.state
 
     let completed = (quiz.questions && (index === quiz.questions.length)) ? true : false
     let numberOfQuestions = quiz.questions ? quiz.questions.length : 0
     let score = 0
+    // console.log("score " + score)
     if (completed) {
       this.state.answers.map((answer, i) => (
         score = score + this.state.quiz.questions[i].answers[answer].point
@@ -67,11 +68,11 @@ export class quiz extends Component {
     }
 
     return (
-      <div className="cancel">
-        <h1>{quiz.title}{quiz.id}</h1>
+      <div>
+        {/* <h1>{quiz.title}{quiz.id}</h1> */}
         {completed ?
-          <div><br /><br /><br />
-            <p>Quiz is finished!</p>
+          <div><br /><h1>{this.state.quiz.title}</h1><br /><br />
+            <h2>Quiz is finished!</h2><br />
             Your score is {score} out of {this.state.quiz.questions.length}
           </div>
           :

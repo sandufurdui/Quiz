@@ -17,11 +17,11 @@ function Dashboard() {
   const history = useNavigate();
 
   useEffect(() => {
-    if (loading) return;
+    // if (loading) return;
     if (!user) return history("/login");
   }, [
     user,
-    loading
+    // loading
   ]);
 
 
@@ -53,9 +53,7 @@ function Dashboard() {
         </div>
 
       ) : (
-        <div>
-
-        </div>
+       null
       )}
     </div>
   );

@@ -51,7 +51,21 @@
   background: linear-gradient(to right, #834d9b, #d04ed6); */
 }
 
+a{
+  cursor: pointer;
+}
 
+.red{
+  color: red;
+}
+
+.green{
+  color: green;
+}
+
+.margin-left-10{
+  margin-left: 10px;
+}
 
 .modal {
   position: absolute;
@@ -65,6 +79,14 @@
   background: rgba(124, 123, 123, 0.627);
   transition: all .4s;
   z-index: 100;
+  overflow: hidden !important;
+}
+
+#demo-modal{
+  overflow-y: hidden;
+  overflow-x: hidden;
+  overflow: hidden;
+  position: fixed;
 }
 
 .modal__content {
@@ -96,10 +118,51 @@
 }
 
 ::placeholder{
-  color: black !important;
+  color: rgb(131, 128, 128) !important;
 }
 
 .add-questions{
   font-size: 30px;
   cursor: pointer;
+}
+
+.tooltip {
+  position: relative;
+  display: inline-block;
+  border-bottom: 1px dotted rgb(70, 69, 69);
+  margin-left: 10px;
+}
+
+.tooltip .tooltiptext {
+  visibility: hidden;
+  width: 200px;
+  padding: 5px;
+  background-color: rgb(70, 69, 69);
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px 0;
+  position: absolute;
+  z-index: 1;
+  bottom: 150%;
+  left: 50%;
+  margin-left: -100px;
+  text-decoration: none;
+  font-weight:normal;
+  font-size: 13px;
+}
+
+.tooltip .tooltiptext::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: rgb(70, 69, 69) transparent transparent transparent;
+}
+
+.tooltip:hover .tooltiptext {
+  visibility: visible;
 }

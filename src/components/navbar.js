@@ -19,7 +19,7 @@ function Navbar({ logged }) {
                 {/* <Link className="link" component={Dashboard} to="/dashboard">Dashboard1</Link> */}
                 {user ? <Link className="link"  to="/dashboard">Dashboard</Link> :
                     <Link className="link"  to="/login">Log In</Link>}
-                {user ? <Link className="link" to="/"><span onClick={logout}>Log Out</span></Link> : null}
+                {user ? <button className="link" onClick={logout}><span >Log Out</span></button> : null}
                 <Music />
             </ul>
         </div>

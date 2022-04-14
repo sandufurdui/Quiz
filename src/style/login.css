@@ -39,6 +39,11 @@ label{
     font-size: 16px;
     font-weight: 500;
 }
+
+.modal__content label{
+    margin-top: 0px;
+}
+
 input{
     display: block;
     height: 50px;

@@ -78,7 +78,7 @@ export class quizCard extends Component {
     render() {
 
         return (
-            <div >
+            < >
                 {this.state.done && this.state.display ?
                     <div className="card">
                         <div className="card-contains short-title card-grid-item">{this.state.title} </div>
@@ -93,7 +93,7 @@ export class quizCard extends Component {
                     null
                 }
                 
-            </div>
+            </>
         )
     }
 }

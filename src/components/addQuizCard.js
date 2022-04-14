@@ -1,52 +1,32 @@
-import { React, useState } from 'react'
-import AddQuestion from "./addQuestionInput"
+import React, { useState } from 'react'
+import { useForm } from "react-hook-form";
+import { yupResolver } from '@hookform/resolvers/yup';
+import * as yup from "yup";
+import AddRemoveInputField from "./addQuestionInput"
+
+const schema = yup.object({
+    // title: yup.string().required().max(50),
+    // description: yup.string().required().max(100),
+    // category: yup.string().required(),
+    // difficulty: yup.number().positive().integer().required().min(0).max(10),
+}).required();
 
 function AddQuizCard() {
-    const [displayAdd, setDisplayAdd] = useState(false)
-    const hidePop = () => setDisplayAdd(false)
-    const showPop = () => setDisplayAdd(true)
-    var questionNumber = 0
+    const [displayAdd, setDisplayAdd] = useState(0);
+    const { register, handleSubmit, formState: { errors } } = useForm({
+        resolver: yupResolver(schema)
+    });
 
-    const inputArr = [
-        {
-            type: "text",
-            id: 1,
-            value: ""
-        }
-    ];
-
-    const [arr, setArr] = useState(inputArr);
-
-    const addInput = () => {
-        questionNumber = questionNumber + 1
-        setArr(s => {
-            return [
-                ...s,
-                {
-                    type: "text",
-                    value: ""
-                }
-            ];
-        });
-    };
-
-    const handleChange = e => {
-        e.preventDefault();
-
-        const index = e.target.id;
-        setArr(s => {
-            const newArr = s.slice();
-            newArr[index].value = e.target.value;
-
-            return newArr;
-        });
-    };
+    const onSubmit = data => {
+        console.log(data);
+        alert(`Quiz was submited \nOnce it passes all tests, it will be displayed on the main page`)
+    }
 
     return (
         <div>
             <div className="dashboard-card">
                 <div className="add-quiz-button parent">
-                    <button className="add-quiz-button" onClick={showPop} >
+                    <button className="add-quiz-button" onClick={() => setDisplayAdd(true)} >
                         +
                     </button>
                 </div>
@@ -54,67 +34,58 @@ function AddQuizCard() {
             {
                 displayAdd ?
                     <div>
-                        <div id="demo-modal" class="modal">
-                            <div class="modal__content">
-                                <h1>Add New Quiz</h1>
-                                <p>Please fill all the fields bellow in order to add new quiz</p><br />
-                                <h4>Give the quiz a title</h4>
-                                <input /><br />
-                                <h4>Add some description</h4>
-                                <input /><br />
-                                <h4>Select a category for it</h4>
-                                <input /><br />
-                                <h4>Dificulty</h4>
-                                <input disabled placeholder="dificulty will be calculated automatically" /><br />
-                                <h4>Enter quiz questions and answers</h4>
-                                
 
-                                {arr.map((item, i) => {
-                                    questionNumber = questionNumber + 1
-                                    return (
-                                        <><label>Question {questionNumber}</label>
-                                            <input
-                                                placeholder='Question'
-                                                onChange={handleChange}
-                                                value={item.value}
-                                                id={i}
-                                                size="40" /><br />
-                                            <input
-                                                placeholder="answer 1"
-                                                onChange={handleChange}
-                                                value={item.value}
-                                                id={i}
-                                                type={item.type}
-                                                size="40" />
-                                            <input
-                                                placeholder="answer 2"
-                                                onChange={handleChange}
-                                                value={item.value}
-                                                id={i}
-                                                type={item.type}
-                                                size="40" />
-                                            <input
-                                                placeholder="answer 3"
-                                                onChange={handleChange}
-                                                value={item.value}
-                                                id={i}
-                                                type={item.type}
-                                                size="40" />
-                                            <input
-                                                placeholder="answer 4"
-                                                onChange={handleChange}
-                                                value={item.value}
-                                                id={i}
-                                                type={item.type}
-                                                size="40" /></>
-                                    );
-                                })}
-                                <button className="add-questions" onClick={addInput}>+</button>
-                                <button class="modal__close" onClick={hidePop}>&times;</button>
-                            </div>
+                        <div id="demo-modal" className="modal">
+                            {/* <form onSubmit={handleSubmit}> */}
+                            <form onSubmit={handleSubmit(onSubmit)}>
+                                <div className="modal__content">
+                                    <h1>Add New Quiz</h1>
+                                    <p>Please fill all the fields bellow in order to add new quiz<br />
+                                        <b className='warning'>
+                                            Note that regardless the order of answers you input, they will be showed in random order
+                                        </b>
+                                    </p><br />
+                                    <label><h4>Give the quiz a title</h4></label>
+                                    <input {...register("title")} />
+                                    <p className='warning'>{errors.title?.message}</p>
+                                    {/* <input {...register("firstName")} />
+                                    <p className='warning'>{errors.firstName?.message}</p> */}
+                                    <br />
+                                    <label><h4>Add some description</h4></label>
+                                    <input {...register("description", { required: true, maxLength: 20 })} />
+                                    <p className='warning'>{errors.description?.message}</p><br />
+                                    <label><h4>Select a category for it</h4></label>
+                                    <input {...register("category", { required: true, maxLength: 20 })} />
+                                    <p className='warning'>{errors.category?.message}</p><br />
+                                    <h4>Difficulty
+                                        <div className="tooltip">   &#8505;
+                                            <span className="tooltiptext">
+                                                One difficulty point is added for each 10 questions <br />
+                                                E.g. Quiz with 24 questions will have 2 difficulty points, 25 questions- 3 difficulty points
+                                            </span>
+                                        </div>
+                                    </h4>
+                                    <input label="difficulty" type="number" {...register("difficulty", { min: 0, max: 10 })} />
+                                    <p className='warning'>{errors.difficulty?.message}</p><br />
+                                    <h4>Enter quiz questions and answers</h4><br />
+
+                                    <AddRemoveInputField />
+
+
+                                    <button type="submit" >submit</button>
+                                    {/* <button className="add-questions" onClick={addInput}>+</button> */}
+                                    <button className="modal__close" onClick={() => setDisplayAdd(false)}>&times;</button>
+                                </div>
+                            </form>
+                            {/* <AddQuestion /> */}
                         </div>
-                    </div> : null}
-        </div>
+
+
+                    </div>
+                    :
+                    null
+            }
+        </div >
     )
 }
 

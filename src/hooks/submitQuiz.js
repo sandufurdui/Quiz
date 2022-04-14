@@ -46,7 +46,7 @@ function submitQuiz(props) {
                     "question": "What geometric shape is generally used for stop signs?",
                     "answers":
                         [{ "point": 0, "label": "Decagon" },
-                        { "point": 0, "label": "Triangle" }, 
+                        { "point": 0, "label": "Triangle" },
                         { "point": 1, "label": "Octagon" },
                         { "point": 0, "label": "United States Department of Defense(Pentagon)" }]
                 },
@@ -54,89 +54,89 @@ function submitQuiz(props) {
                     "question": "What is 'cynophobia'?",
                     "answers":
                         [{ "point": 0, "label": "Fear of being smart" },
-                        { "point": 1, "label": "Fear of dogs" }, 
+                        { "point": 1, "label": "Fear of dogs" },
                         { "point": 0, "label": "Fear of being poisoned" },
                         { "point": 0, "label": "Fear of frogs" }]
-                },{
+                }, {
                     "question": "Who named the Pacific Ocean?",
                     "answers":
                         [{ "point": 0, "label": "Marco Polo" },
-                        { "point": 0, "label": "Christopher Columbus" }, 
+                        { "point": 0, "label": "Christopher Columbus" },
                         { "point": 1, "label": "Ferdinand Magellan" },
                         { "point": 0, "label": "Vasco Da Gama" }]
-                },{
+                }, {
                     "question": "How many languages are written from right to left?",
                     "answers":
                         [{ "point": 1, "label": "12" },
-                        { "point": 0, "label": "1" }, 
+                        { "point": 0, "label": "1" },
                         { "point": 0, "label": "5" },
                         { "point": 0, "label": "which way is right?" }]
-                },{
+                }, {
                     "question": "How many countries still have Shilling as currency? Bonus point: Which countries?",
                     "answers":
                         [{ "point": 0, "label": "1, the one where Jack Sparrow lived in" },
-                        { "point": 0, "label": "2, SAR and Congo" }, 
+                        { "point": 0, "label": "2, SAR and Congo" },
                         { "point": 0, "label": "3, DRC, Congo and Somalia" },
                         { "point": 1, "label": "4, Kenya, Uganda, Tanzania and Somalia" }]
-                },{
+                }, {
                     "question": "What is the name of the biggest technology company in South Korea?",
                     "answers":
                         [{ "point": 0, "label": "Toshiba" },
-                        { "point": 0, "label": "Nvidia" }, 
+                        { "point": 0, "label": "Nvidia" },
                         { "point": 1, "label": "Samsung" },
                         { "point": 0, "label": "Logitech" }]
-                },{
+                }, {
                     "question": "Which animal can be seen on the Porsche logo?",
                     "answers":
                         [{ "point": 0, "label": "Mare(female horse)" },
-                        { "point": 1, "label": "Stallion" }, 
+                        { "point": 1, "label": "Stallion" },
                         { "point": 0, "label": "Bull" },
                         { "point": 0, "label": "Hulk(Mark Buffalo)" }]
-                },{
+                }, {
                     "question": "What is the name of the largest ocean on earth?",
                     "answers":
                         [{ "point": 0, "label": "Ur mom" },
-                        { "point": 0, "label": "Australia" }, 
+                        { "point": 0, "label": "Australia" },
                         { "point": 1, "label": "Pacific" },
                         { "point": 0, "label": "Ghidighici" }]
-                },{
+                }, {
                     "question": "Who was the first woman pilot to fly solo across the Atlantic?",
                     "answers":
                         [{ "point": 1, "label": "Amelia Earhart" },
-                        { "point": 0, "label": "Women don't exit kitchens" }, 
+                        { "point": 0, "label": "Women don't exit kitchens" },
                         { "point": 0, "label": "Do women even fly?" },
                         { "point": 0, "label": "Lady Gaga" }]
-                },{
+                }, {
                     "question": "Demolition of the Berlin wall separating East and West Germany began in what year?",
                     "answers":
                         [{ "point": 0, "label": "Yesterday" },
-                        { "point": 0, "label": "1945" }, 
+                        { "point": 0, "label": "1945" },
                         { "point": 0, "label": "11th September, 2001" },
                         { "point": 1, "label": "1989" }]
-                },{
+                }, {
                     "question": "Who was the first woman to win a Nobel Prize (in 1903)?",
                     "answers":
                         [{ "point": 0, "label": "Nancy Chang" },
-                        { "point": 0, "label": "Mary Lowe Good" }, 
+                        { "point": 0, "label": "Mary Lowe Good" },
                         { "point": 1, "label": "Marie Curie" },
                         { "point": 0, "label": "Martin Heinrich Klaproth" }]
-                },{
+                }, {
                     "question": "Who discovered uranium?",
                     "answers":
                         [{ "point": 0, "label": "Marie Curie" },
-                        { "point": 1, "label": "Martin Heinrich Klaproth" }, 
+                        { "point": 1, "label": "Martin Heinrich Klaproth" },
                         { "point": 0, "label": "Julius Klaproth" },
                         { "point": 0, "label": "Dimitri Mendeleev" }]
-                },{
+                }, {
                     "question": "Who discovered polonium and radium?",
                     "answers":
                         [{ "point": 0, "label": "Einstein" },
-                        { "point": 1, "label": "Marie Curie" }, 
+                        { "point": 1, "label": "Marie Curie" },
                         { "point": 0, "label": "Richard Abegg " },
                         { "point": 0, "label": "Martin Heinrich Klaproth" }]
                 }
-            
-            ]
+
+                ]
             }
 
         ).catch((error) => {
