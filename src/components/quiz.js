@@ -2,24 +2,29 @@ import React, { Component } from 'react'
 import "../style/main.css"
 import "../style/quiz.css"
 import { getDatabase, ref, child, get } from "firebase/database";
-
 import Question from './question'
+import arrayShuffle from 'array-shuffle';
 
-export class quiz extends Component {
+export class Quiz extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      quiz: {},
+      quiz: { },
       index: 0,
       answers: [],
-      id: this.props.id
+      shuffledA: [],
+      id: this.props.id,
+      count: 0
     }
   }
+  
+
   componentDidMount() {
     const dbRef = ref(getDatabase());
     get(child(dbRef, 'quizes/' + this.state.id)).then((snapshot) => {
       if (snapshot.exists()) {
         const dd = snapshot.val()
+        // const shuffledAnsw = handleShuffle()
         this.setState({
           quiz: dd,
         })
@@ -32,6 +37,7 @@ export class quiz extends Component {
     })
   }
 
+  
   handleSubmit() {
     if (this.state.index < this.state.quiz.questions.length) {
       this.setState({ 'index': this.state.index + 1 })
@@ -48,23 +54,24 @@ export class quiz extends Component {
     let list = [...this.state.answers.slice(0, this.state.index),
     parseInt(event.target.value),
     ...this.state.answers.slice(this.state.index + 1)]
-    this.setState({ 'answers': list })
+    this.setState({
+      'answers': list
+    })
   }
 
   render() {
     const {
       quiz, index
     } = this.state
-    // console.log(quiz.questions)
     let completed = (quiz.questions && (index === quiz.questions.length)) ? true : false
     let numberOfQuestions = quiz.questions ? quiz.questions.length : 0
     let score = 0
-    // console.log("score " + score)
     if (completed) {
       this.state.answers.map((answer, i) => (
         score = score + this.state.quiz.questions[i].answers[answer].point
       ))
     }
+    
 
     return (
       <div>
@@ -80,9 +87,13 @@ export class quiz extends Component {
             {quiz.questions && index < numberOfQuestions ?
               <Question
                 question={quiz.questions[index]}
+                // answers={this.state.shuffledA}
                 index={index}
                 onAnswerSelected={(event) => this.handleAnswerSelected(event)}
                 onSubmit={() => this.handleSubmit()}
+
+              // = {this.setToFalse()}
+              // changeState ={() => this.shuffleFunc()}
               />
               : ''}
           </div>
@@ -92,4 +103,4 @@ export class quiz extends Component {
   }
 }
 
-export default quiz
+export default Quiz

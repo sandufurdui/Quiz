@@ -4,7 +4,6 @@ import Login from "./components/login";
 import Dashboard from "./components/dashboard";
 import Main from "./components/main"
 import About from "./components/about"
-import Get from './hooks/getQuiz'
 function App() {
   return (
     <div>

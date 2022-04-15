@@ -5,10 +5,7 @@ import { useNavigate } from "react-router";
 import "../style/dashboard.css";
 import { auth, db, logout } from "../firebase";
 import Navbar from "./navbar"
-import Submit from "../hooks/submitQuiz"
-import Get from "../hooks/getQuiz"
 import Login from "./login"
-import Test from "./test"
 import AddCard from "./addQuizCard"
 
 function Dashboard() {
@@ -48,7 +45,7 @@ function Dashboard() {
               </div> */}
             </div>
           </div>
-          <Submit id="lol" />
+          {/* <Submit id="lol" /> */}
           {/* <Get id="second" /> */}
         </div>
 

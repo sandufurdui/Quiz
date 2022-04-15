@@ -1,36 +1,51 @@
 import React from 'react'
+// import {store, useGlobalState} from 'state-pool';
 
-function shuffleArray(array) {
-  // console.log("inside ")
-  // console.log(array)
-  let i = array.length - 1;
-  for (; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1));
-    const temp = array[i];
-    array[i] = array[j];
-    array[j] = temp;
-  }
-  // console.log("inside2 ")
-  // console.log(array)
-  return array;
-}
+const Question = ({ question, answers, index, onAnswerSelected, onSubmit }) => {
+  // let count = 1
+  function ShuffleArray(array, staticList) {
+    // const [toShuffle, setToShuffle] = useGlobalState("toShuffle");
+    // console.log("inside ")
+    // console.log("before assignment " +count)
+    let shuffled = []}
+  //   count = 1
+  //   console.log("after assignment " +count)
+  //   // shuffled = array.sort(() => Math.random() - 0.5)
+  //   // console.log("inside2 ")
+  //   // console.log(shuffled)
+  //   // console.log("before changing " + toShuffle)
+  //   // // changeState()
+  //   // // setToShuffle(toShuffle= false)
+  //   // console.log("after changing " + toShuffle)
+  //   return shuffled;
+  // }
 
-const Question = ({  question, index, onAnswerSelected, onSubmit }) => {
-  console.log("original ")
-  // console.log(question.answers)
-  const q = question.answers
-  console.log(q)
-  const shuffledPosts = shuffleArray(q);
-  console.log("shufled ")
+  // // console.log("original ")
+  // // console.log(question.answers)
+  // const q = question.answers
+  // // console.log("from question " + toShuffle)
+  // let shuffledPosts = []
+  // if (count == 0) {
+  //   console.log("loh " + count)
+  // } else {
+  //   console.log("loh 4444 " + count)
+  // }
+  // console.log("loh " + count)
+  // shuffledPosts = ShuffleArray(q, shuffledPosts);
+  // console.log("loh 4444 " + count)
+  // console.log("------------")
+  // console.log(toShuffle)
+  // console.log("shufled ")
   // console.log(shuffledPosts)
 
-  const shuffled = q.sort(() => Math.random() - 0.5)
-  console.log(q)
+  // const shuffled = q.sort(() => Math.random() - 0.5)
+  // console.log(answers)
+
   return (
     <div >
-      <h2 className="question-name">{question.question}</h2>
+      <h2 className="question-name">{question.name}</h2>
       <div className="main-quiz-ul">
-        {q.map((answer, i) =>
+        {question.answers.map((answer, i) =>
           <div key={`${index}-${i}`}>
             <li className="option-li">
               <input required className="radio-input"
@@ -43,7 +58,7 @@ const Question = ({  question, index, onAnswerSelected, onSubmit }) => {
               />
               {' '}
 
-              <label htmlFor={`question_${index}_answer_${i}`}>{answer.label}</label>
+              <label htmlFor={`question_${index}_answer_${i}`}>{answer.field}</label>
               <div className="check"><div className="inside"></div>
               </div>
             </li>

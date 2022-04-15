@@ -1,10 +1,6 @@
 import React, { Component } from 'react'
-// import "../style/main.css"
-import Quiz from "./quiz"
 import Card from "./quizCard"
 import Navbar from "./navbar"
-import GetData from "../hooks/getQuiz"
-import Submit from "../hooks/submitQuiz"
 import { getDatabase, ref, set, child, get } from "firebase/database";
 
 
@@ -25,7 +21,7 @@ export class main extends Component {
         this.setState({
           num: numOfQuizes
         })
-        console.log("number of quizes: " + this.state.num)
+        // console.log("number of quizes: " + this.state.num)
       } else {
         console.log("No data available");
       }

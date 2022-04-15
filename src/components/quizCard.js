@@ -71,7 +71,7 @@ export class quizCard extends Component {
 
 
     componentDidMount = async () => {
-        console.log("card with id " + this.state.id + " mounted")
+        // console.log("card with id " + this.state.id + " mounted")
         this.getData()
     }
 
@@ -83,8 +83,9 @@ export class quizCard extends Component {
                     <div className="card">
                         <div className="card-contains short-title card-grid-item">{this.state.title} </div>
                         <div className="card-contains short-description card-grid-item">
-                            {this.state.description} <br /><br />Number of questions: {this.state.numberOfQuestions}
+                            {this.state.description} <br />
                         </div>
+                        <div>Number of questions: {this.state.numberOfQuestions}</div>
                         {/* <Test /> */}
                         <div className="card-contains card-grid-item">
                             <StartQuiz id={this.state.id} quiz={this.state.quiz} length={this.state.numberOfQuestions} title={this.state.quiz.title} description={this.state.description}/>
