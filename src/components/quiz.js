@@ -6,7 +6,6 @@ import { getDatabase, ref, child, get } from "firebase/database";
 import Question from './question'
 
 export class quiz extends Component {
-  // var data = require('json!./data.json');
   constructor(props) {
     super(props)
     this.state = {
