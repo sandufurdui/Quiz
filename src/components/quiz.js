@@ -55,7 +55,7 @@ export class quiz extends Component {
     const {
       quiz, index
     } = this.state
-
+    // console.log(quiz.questions)
     let completed = (quiz.questions && (index === quiz.questions.length)) ? true : false
     let numberOfQuestions = quiz.questions ? quiz.questions.length : 0
     let score = 0

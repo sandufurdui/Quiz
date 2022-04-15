@@ -9,10 +9,10 @@ import { getDatabase, ref, set, child, get } from "firebase/database";
 var questionsList = []
 var answersList = []
 const schema = yup.object({
-    title: yup.string().required().max(50),
-    description: yup.string().required().max(100),
-    category: yup.string().required(),
-    difficulty: yup.number().positive().integer().required().min(0).max(10),
+    // title: yup.string().required().max(50),
+    // description: yup.string().required().max(100),
+    // category: yup.string().required(),
+    // difficulty: yup.number().positive().integer().required().min(0).max(10),
 }).required();
 
 function AddQuizCard() {
@@ -30,8 +30,16 @@ function AddQuizCard() {
         // console.log(qqq)
         const questions = questionsList
         const db = getDatabase();
-        set(ref(db, 'quizes/4/' ), { data });
-        set(ref(db, 'quizes/4/' ), { questions});
+        console.log(data['title'])
+        set(ref(db, 'quizes/4/'), {
+            title: data["title"],
+            description: data["description"],
+            category: data["category"],
+            difficulty: data["difficulty"],
+            display: true,
+            questions : questions
+        });
+        // set(ref(db, 'quizes/4/'), { questions });
 
         // set(ref(db, 'quizes/5'), data).catch((error) => {
         //     console.error(error);

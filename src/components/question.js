@@ -1,19 +1,36 @@
 import React from 'react'
 
-const Question = ({
-  question,
-  index,
-  onAnswerSelected,
-  onSubmit
-}) => {
+function shuffleArray(array) {
+  // console.log("inside ")
+  // console.log(array)
+  let i = array.length - 1;
+  for (; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    const temp = array[i];
+    array[i] = array[j];
+    array[j] = temp;
+  }
+  // console.log("inside2 ")
+  // console.log(array)
+  return array;
+}
 
+const Question = ({  question, index, onAnswerSelected, onSubmit }) => {
+  console.log("original ")
+  // console.log(question.answers)
+  const q = question.answers
+  console.log(q)
+  const shuffledPosts = shuffleArray(q);
+  console.log("shufled ")
+  // console.log(shuffledPosts)
 
-
+  const shuffled = q.sort(() => Math.random() - 0.5)
+  console.log(q)
   return (
     <div >
       <h2 className="question-name">{question.question}</h2>
       <div className="main-quiz-ul">
-        {question.answers.map((answer, i) =>
+        {q.map((answer, i) =>
           <div key={`${index}-${i}`}>
             <li className="option-li">
               <input required className="radio-input"
