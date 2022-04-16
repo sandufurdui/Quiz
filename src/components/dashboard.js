@@ -10,7 +10,6 @@ import AddCard from "./addQuizCard"
 
 function Dashboard() {
   const [user, loading, error] = useAuthState(auth);
-  // const [name, setName] = useState("");
   const history = useNavigate();
 
   useEffect(() => {

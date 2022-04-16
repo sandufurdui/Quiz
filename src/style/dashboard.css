@@ -76,10 +76,12 @@ a{
   display: flex;
   align-items: center;
   justify-content: center;
-  background: rgba(124, 123, 123, 0.627);
   transition: all .4s;
   z-index: 100;
   overflow: hidden !important;
+}
+.modal-parent.modal{
+  filter: blur(10px);
 }
 
 #demo-modal{

@@ -17,8 +17,28 @@ const schema = yup.object({
 }).required();
 
 function AddQuizCard() {
+    const db = getDatabase();
+    const dbRef = ref(getDatabase());
     const [normalList, setNormalList] = useState([{ questions: [questionsList] }])
     const [displayAdd, setDisplayAdd] = useState(0);
+    const [quizId, setQuizId] = useState("");
+
+    const addQuiz = () => {
+        setDisplayAdd(true)
+        get(child(dbRef, `quizes/`)).then((snapshot) => {
+            if (snapshot.exists()) {
+                const Qsize = snapshot.size + 1
+                //   console.log(snapshot.size);
+                setQuizId(snapshot.size)
+                // console.log(snapshot.size)
+                // console.log(quizId)
+            } else {
+                console.log("No data available");
+            }
+        }).catch((error) => {
+            console.error(error);
+        });
+    }
     // const { register, handleSubmit, formState: { errors } } = useForm({
     //     resolver: yupResolver(schema)
     // });
@@ -28,29 +48,26 @@ function AddQuizCard() {
         register,
         handleSubmit,
         getValues,
-        errors,
+        // errors,
         reset,
-        setValue
+        setValue,
+        // formState: { errors }
     } = useForm({
         // defaultValues
     });
     const onSubmit = (data) => {
-        
-        for(var i=0; i< data.test.length; i++) {
-            // console.log("original", data.test[0].answers);
+
+        for (var i = 0; i < data.test.length; i++) {
             let original = data.test[i].answers
             let qq = arrayShuffle(original)
-            // console.log("shuffled", qq);
             data.test[i].answers = arrayShuffle(original)
-            // console.log("result", data.test[0].answers);
-            // qq = []
-            // original = []
         }
-        // original = data.test[0].answers
-        // const qq = arrayShuffle(original)
-        // console.log("data", data.test[0].answers);
-        const db = getDatabase();
-        set(ref(db, 'quizes/5'), {
+        // console.log("last  " + quizId)
+        // setQuizId(quizId)
+        const next = quizId + 1
+        // console.log("next "+ next)
+        // set(ref(db, `quizes/${next}`), {
+        set(ref(db, `quizes/1`), {
             display: true,
             title: data.title,
             description: data.description,
@@ -58,20 +75,21 @@ function AddQuizCard() {
             difficulty: data.difficulty,
             questions: data.test
         });
+        alert('submited!')
 
     }
     return (
         <div>
             <div className="dashboard-card">
                 <div className="add-quiz-button parent">
-                    <button className="add-quiz-button" onClick={() => setDisplayAdd(true)} >
+                    <button className="add-quiz-button" onClick={() => addQuiz()} >
                         +
                     </button>
                 </div>
             </div>
             {
                 displayAdd ?
-                    <div>
+                    <div className="modal-parent">
 
                         <div id="demo-modal" className="modal">
                             {/* <form onSubmit={handleSubmit}> */}
@@ -81,7 +99,8 @@ function AddQuizCard() {
                                         {...{
                                             control, register,
                                             // defaultValues,
-                                            getValues, setValue, errors
+                                            getValues, setValue, 
+                                            // errors
                                         }}
                                     />
 

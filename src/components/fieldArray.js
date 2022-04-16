@@ -1,11 +1,14 @@
 import React from "react";
 import { useFieldArray } from "react-hook-form";
+import { ErrorMessage } from '@hookform/error-message';
 import NestedArray from "./nestetdFieldArray";
 
 let renderCount = 0;
 
 export default function Fields({ control, register, setValue, getValues }) {
-    const { fields, append, remove, prepend } = useFieldArray({
+    const { fields, append, remove, prepend, 
+        // errors 
+    } = useFieldArray({
         control,
         name: "test"
     });
@@ -21,16 +24,37 @@ export default function Fields({ control, register, setValue, getValues }) {
                 </b>
             </p><br />
             <label><h4>Give the quiz a title</h4></label>
-            <input {...register("title")} />
+            <input {...register("title", { required: true, maxLength: 30 })} />
+            {/* <ErrorMessage errors={errors} name="title" /> */}
+      
             {/* <p className='warning'>{errors.title?.message}</p> */}
             {/* <input {...register("firstName")} /> */}
             {/* <p className='warning'>{errors.firstName?.message}</p> */}
             <br />
             <label><h4>Add some description</h4></label>
-            <input {...register("description", { required: true, maxLength: 50 })} />
+            <input {...register("description", { required: true, maxLength: 150 })} />
             {/* <p className='warning'>{errors.description?.message}</p><br /> */}
             <label><h4>Select a category for it</h4></label>
-            <input {...register("category", { required: true, maxLength: 20 })} />
+            {/* <input {...register("category", { required: true, maxLength: 20 })} />
+             */}
+            <select 
+                {...register('category', { required: "select one option" })}>
+                <option value=""></option>
+                <option value="art and literature">Art and Literature</option>
+                <option value="general knowledge">General Knowledge</option>
+                <option value="geography">Geography</option>
+                <option value="history">History</option>
+                <option value="music">Music</option>
+                <option value="science and nature">Science and Nature</option>
+                <option value="sport">Sport</option>
+                <option value="tv and films">TV and Films</option>
+                <option value="art and literature">Art and Literature</option>
+                <option value="trivia">Trivia</option>
+                <option value="other">Other</option>
+            </select>
+            {/* {errors.func && <p style={{ color: 'red' }}> {errors.func.message}</p>} */}
+            {/* <input type="text" id="fname" name="fname" /> */}
+
             {/* <p className='warning'>{errors.category?.message}</p><br /> */}
             <h4>Difficulty
                 <div className="tooltip">   &#8505;
@@ -48,7 +72,7 @@ export default function Fields({ control, register, setValue, getValues }) {
                     <div key={item.id}>
                         <input
                             name={`test[${index}].name`}
-                            {...register(`test[${index}].name`, { required: true })}
+                            {...register(`test[${index}].name`, { required: true, maxLength: 70 })}
                             defaultValue={item.name}
                         />
                         <button className="red" type="button" onClick={() => remove(index)}>
@@ -60,7 +84,7 @@ export default function Fields({ control, register, setValue, getValues }) {
             })}
 
             <section>
-                <a  class="green"
+                <a class="green"
                     type="button"
                     onClick={() => {
                         setValue("test", [

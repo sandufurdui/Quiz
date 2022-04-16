@@ -13,7 +13,7 @@ export default ({ nestIndex, control, register }) => {
                 return (
                     <div key={item.id} style={{ marginLeft: 20 }}>
                         <input
-                            {...register(`test[${nestIndex}].answers[${k}].field`, {"point" : 1})}
+                            {...register(`test[${nestIndex}].answers[${k}].field`, {"point" : 1}, )}
                             style={{ marginRight: "25px" }}
                         />
                         {/* <button type="button" onClick={() => remove(k)}>
