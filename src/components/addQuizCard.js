@@ -62,12 +62,10 @@ function AddQuizCard() {
             let qq = arrayShuffle(original)
             data.test[i].answers = arrayShuffle(original)
         }
-        // console.log("last  " + quizId)
-        // setQuizId(quizId)
         const next = quizId + 1
         // console.log("next "+ next)
-        // set(ref(db, `quizes/${next}`), {
-        set(ref(db, `quizes/1`), {
+        set(ref(db, `quizes/${next}`), {
+        // set(ref(db, `quizes/1`), {
             display: true,
             title: data.title,
             description: data.description,

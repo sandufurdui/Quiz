@@ -79,10 +79,11 @@ a{
   transition: all .4s;
   z-index: 100;
   overflow: hidden !important;
+  backdrop-filter: blur(8px);
 }
-.modal-parent.modal{
+/* .modal-parent.modal{
   filter: blur(10px);
-}
+} */
 
 #demo-modal{
   overflow-y: hidden;
@@ -91,7 +92,14 @@ a{
   position: fixed;
 }
 
+/* .blur{
+  height: 100vh;
+  width: 100vw;
+  filter: blur(10px)
+} */
+
 .modal__content {
+  /* filter: none !important; */
   border-radius: 10px;
   position: relative;
   min-height: 30vh;

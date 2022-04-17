@@ -39,7 +39,7 @@ export default function Fields({ control, register, setValue, getValues }) {
              */}
             <select 
                 {...register('category', { required: "select one option" })}>
-                <option value=""></option>
+                <option value="">Select</option>
                 <option value="art and literature">Art and Literature</option>
                 <option value="general knowledge">General Knowledge</option>
                 <option value="geography">Geography</option>
@@ -72,7 +72,7 @@ export default function Fields({ control, register, setValue, getValues }) {
                     <div key={item.id}>
                         <input
                             name={`test[${index}].name`}
-                            {...register(`test[${index}].name`, { required: true, maxLength: 70 })}
+                            {...register(`test[${index}].name`, { required: true, maxLength:150 })}
                             defaultValue={item.name}
                         />
                         <button className="red" type="button" onClick={() => remove(index)}>
