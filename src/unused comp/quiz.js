@@ -4,12 +4,13 @@ import "../style/quiz.css"
 import { getDatabase, ref, child, get } from "firebase/database";
 import Question from './question'
 import arrayShuffle from 'array-shuffle';
+import axios from 'axios'
 
 export class Quiz extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      quiz: { },
+      quiz: {},
       index: 0,
       answers: [],
       shuffledA: [],
@@ -17,27 +18,26 @@ export class Quiz extends Component {
       count: 0
     }
   }
-  
+
 
   componentDidMount() {
-    const dbRef = ref(getDatabase());
-    get(child(dbRef, 'quizes/' + this.state.id)).then((snapshot) => {
-      if (snapshot.exists()) {
-        const dd = snapshot.val()
-        // const shuffledAnsw = handleShuffle()
+    axios
+      .get(`https://pure-caverns-82881.herokuapp.com/api/v54/quizzes/${this.state.id}`, {
+        headers: { "X-Access-Token": '3d12a947e8715b83faa99dd81a70bcbfdcb7871c5c77a633a07253b7d6edd2be' },
+      })
+      .then((res) => {
+        const data = res.data;
         this.setState({
-          quiz: dd,
-        })
-        // console.log(this.state.quiz)
-      } else {
-        console.log("No data available");
-      }
-    }).catch((error) => {
-      console.log(error);
-    })
+          quiz: data,
+        });
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+
   }
 
-  
+
   handleSubmit() {
     if (this.state.index < this.state.quiz.questions.length) {
       this.setState({ 'index': this.state.index + 1 })
@@ -71,7 +71,7 @@ export class Quiz extends Component {
         score = score + this.state.quiz.questions[i].answers[answer].point
       ))
     }
-    
+
 
     return (
       <div>
@@ -91,9 +91,6 @@ export class Quiz extends Component {
                 index={index}
                 onAnswerSelected={(event) => this.handleAnswerSelected(event)}
                 onSubmit={() => this.handleSubmit()}
-
-              // = {this.setToFalse()}
-              // changeState ={() => this.shuffleFunc()}
               />
               : ''}
           </div>

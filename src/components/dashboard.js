@@ -4,14 +4,32 @@ import { useAuthState } from "react-firebase-hooks/auth";
 import { useNavigate } from "react-router";
 import "../style/dashboard.css";
 import { auth, db, logout } from "../firebase";
-import Navbar from "./navbar"
-import Login from "./login"
-import AddCard from "./addQuizCard"
+import Navbar from "../unused comp/navbar"
+import Card from "../unused comp/quizCard"
+import axios from 'axios'
 
 function Dashboard() {
   const [user, loading, error] = useAuthState(auth);
   const history = useNavigate();
+  const [quizzes, setQuizzes] = useState([]);
+  const [userId, setUserId] = useState("");
 
+  const fetchQuizzes = async () => {
+    const { data } = await axios.get('https://pure-caverns-82881.herokuapp.com/api/v54/quizzes',
+      {
+        headers: {
+          "X-Access-Token": '3d12a947e8715b83faa99dd81a70bcbfdcb7871c5c77a633a07253b7d6edd2be',
+        }
+      });
+    const quizzes = data;
+    setQuizzes(quizzes);
+    console.log(quizzes);
+  };
+
+  useEffect(() => {
+    setUserId(localStorage.getItem("user-info"))
+    fetchQuizzes();
+  }, []);
   useEffect(() => {
     // if (loading) return;
     if (!user) return history("/login");
@@ -30,26 +48,27 @@ function Dashboard() {
           </div>
           <div className="main_container">
             <div className="row">
-              <div className="grid-item">
-                <AddCard />
-              </div>
-              {/* <div className="grid-item">
-                <AddCard />
-              </div>
-              <div className="grid-item">
-                <AddCard />
-              </div> */}
-              {/* <div className="grid-item">
-                <AddCard />
-              </div> */}
+              {quizzes.map(quiz => (
+                // <Link to={`/quizzes/${quiz.id}`}>
+                <>
+                  <Card id={quiz.id} />
+                  {/* <div className='quiz' key={quiz.id} >
+                    <h2 className="titlee">Quiz</h2>
+                    <p className="title">Title: {quiz.title}</p>
+                    <p className="title">Question count: {quiz.questions_count}</p>
+
+                    <input type="button" className="start-quiz" value="Start quiz" />
+                  </div> */}
+
+                </>
+              ))}
+              {/* <Card id={1} /> */}
             </div>
           </div>
-          {/* <Submit id="lol" /> */}
-          {/* <Get id="second" /> */}
         </div>
 
       ) : (
-       null
+        null
       )}
     </div>
   );

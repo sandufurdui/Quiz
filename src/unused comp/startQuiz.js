@@ -27,12 +27,12 @@ function StartQuiz(props) {
                         <div id="demo-modal" className="modal">
                             <div className="modal__content">
                                 <h1>{props.title}</h1>
-                                <p>{props.description} <br />
+                                {/* <p>{props.description} <br />
                                     <b className="warning">
                                         Please note that if you dont select any answer, your final score will be 0 by default
                                     </b>
-                                </p>
-                                <p>Number of questions {props.length}</p>
+                                </p> */}
+                                {/* <p>Number of questions {props.length}</p> */}
                                 <button className="modal__close" onClick={hideModal}>&times;</button><br /><br />
                                 <button className="link start-quiz" onClick={startQuiz}>
                                     Start Quiz

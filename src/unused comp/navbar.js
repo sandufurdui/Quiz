@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 import { useAuthState } from "react-firebase-hooks/auth";
 import { auth, db, logout } from "../firebase";
-import Dashboard from "./dashboard"
+import Dashboard from "../components/dashboard"
 import Login from './login'
 import Main from "./main"
 import About from "./about"
@@ -14,7 +14,7 @@ function Navbar({ logged }) {
     return (
         <div className="navbar_container">
             <ul className="menu-bar">
-                <Link className="link"  to="/">Home</Link>
+                {/* <Link className="link"  to="/">Home</Link> */}
                 <Link className="link"  to="/about">About</Link>
                 {/* <Link className="link" component={Dashboard} to="/dashboard">Dashboard1</Link> */}
                 {user ? <Link className="link"  to="/dashboard">Dashboard</Link> :
