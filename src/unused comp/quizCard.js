@@ -14,7 +14,7 @@ export class quizCard extends Component {
             title: "",
             description: "",
             dificulty: 0,
-            numberOfQuestions: 0,
+            // numberOfQuestions: this.props.length,
             display: false,
             done: false
         };
@@ -23,7 +23,7 @@ export class quizCard extends Component {
 
     componentDidMount = async () => {
         // this.getData()
-        
+        // console.log(this.props.length)
         axios
             .get(`https://pure-caverns-82881.herokuapp.com/api/v54/quizzes/${this.state.id}`, {
                 headers: { "X-Access-Token": '3d12a947e8715b83faa99dd81a70bcbfdcb7871c5c77a633a07253b7d6edd2be' },
@@ -33,6 +33,7 @@ export class quizCard extends Component {
                 this.setState({
                     quiz: data  ,
                 });
+                // console.log(this.state.quiz)
             })
             .catch(function (error) {
                 console.log(error);
@@ -40,15 +41,14 @@ export class quizCard extends Component {
             this.setState({
                 title: this.state.quiz.title,
                 // description: this.state.quiz.description,
-                numberOfQuestions: this.state.quiz.questions.size,
+                // numberOfQuestions: this.state.quiz.questions_count,
                 display: true,
                 done: true
             })
     }
 
     render() {
-        console.log(this.state.quiz.title)
-        console.log(this.state.quiz.questions)
+        
         return (
             < >
                 {/* {this.state.done && this.state.display ? */}
@@ -57,7 +57,7 @@ export class quizCard extends Component {
                         {/* <div className="card-contains short-description card-grid-item">
                             {this.state.quiz.} <br />
                         </div> */}
-                        {/* <div>Number of questions: {this.state.numberOfQuestions}</div> */}
+                        <div>Number of questions: {this.state.quiz?.questions?.length}</div>
                         {/* <Test /> */}
                         <div className="card-contains card-grid-item">
                             <StartQuiz

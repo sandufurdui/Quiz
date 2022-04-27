@@ -23,7 +23,8 @@ function Dashboard() {
       });
     const quizzes = data;
     setQuizzes(quizzes);
-    console.log(quizzes);
+    // console.log(quizzes);
+    // console.log(quizzes.questions_count)
   };
 
   useEffect(() => {
