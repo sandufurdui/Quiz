@@ -1,5 +1,5 @@
 import { React, useState } from 'react'
-import Quiz from "./quiz"
+import Quiz from "../components/quiz"
 
 function StartQuiz(props) {
     const [displayModal, setDisplayModal] = useState(false)

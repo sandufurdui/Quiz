@@ -4,8 +4,8 @@ import { useAuthState } from "react-firebase-hooks/auth";
 import { useNavigate } from "react-router";
 import "../style/dashboard.css";
 import { auth, db, logout } from "../firebase";
-import Navbar from "../unused comp/navbar"
-import Card from "../unused comp/quizCard"
+import Navbar from "./navbar"
+import Card from "./quizCard"
 import axios from 'axios'
 
 function Dashboard() {

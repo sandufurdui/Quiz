@@ -2,7 +2,7 @@ import React, { Component, useState, useEffect } from 'react'
 import "../style/card.css"
 import { getDatabase, ref, set, child, get } from "firebase/database";
 import quiz from './quiz';
-import StartQuiz from "./startQuiz"
+import StartQuiz from "../unused comp/startQuiz"
 import axios from "axios"
 
 export class quizCard extends Component {
@@ -31,45 +31,45 @@ export class quizCard extends Component {
             .then((res) => {
                 const data = res.data;
                 this.setState({
-                    quiz: data  ,
+                    quiz: data,
                 });
                 // console.log(this.state.quiz)
             })
             .catch(function (error) {
                 console.log(error);
             });
-            this.setState({
-                title: this.state.quiz.title,
-                // description: this.state.quiz.description,
-                // numberOfQuestions: this.state.quiz.questions_count,
-                display: true,
-                done: true
-            })
+        this.setState({
+            title: this.state.quiz.title,
+            // description: this.state.quiz.description,
+            // numberOfQuestions: this.state.quiz.questions_count,
+            display: true,
+            done: true
+        })
     }
 
     render() {
-        
+
         return (
             < >
                 {/* {this.state.done && this.state.display ? */}
-                    <div className="card">
-                        <div className="card-contains short-title card-grid-item">{this.state.quiz.title} </div>
-                        {/* <div className="card-contains short-description card-grid-item">
+                <div className="card">
+                    <div className="card-contains short-title card-grid-item">{this.state.quiz.title} </div>
+                    {/* <div className="card-contains short-description card-grid-item">
                             {this.state.quiz.} <br />
                         </div> */}
-                        <div>Number of questions: {this.state.quiz?.questions?.length}</div>
-                        {/* <Test /> */}
-                        <div className="card-contains card-grid-item">
-                            <StartQuiz
-                                id={this.state.id}
-                                quiz={this.state.quiz}
-                                // length={this.state.numberOfQuestions}
-                                title={this.state.quiz.title}
-                                // description={this.state.description}
-                            />
-                        </div>
-                    </div> 
-                    {/* :
+                    <div>Number of questions: {this.state.quiz?.questions?.length}</div>
+                    {/* <Test /> */}
+                    <div className="card-contains card-grid-item">
+                        <StartQuiz
+                            id={this.state.id}
+                            quiz={this.state.quiz}
+                            // length={this.state.numberOfQuestions}
+                            title={this.state.quiz.title}
+                        // description={this.state.description}
+                        />
+                    </div>
+                </div>
+                {/* :
                     null
                 } */}
 

@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 import { useAuthState } from "react-firebase-hooks/auth";
 import { auth, db, logout } from "../firebase";
-import Dashboard from "../components/dashboard"
+import Dashboard from "./dashboard"
 import Login from './login'
 import Main from "./main"
 import About from "./about"

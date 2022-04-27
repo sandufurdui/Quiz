@@ -13,26 +13,15 @@ function Login() {
   const [userId, setUserId] = useState(0)
 
   const [user, setUser] = useState(false);
-    const history = useNavigate();
-    if ((localStorage.getItem('user-info'))&&(user)) {
-      setUser(true)
-    }
-
-    useEffect(() => {
-      // if (loading) {
-      //   // maybe trigger a loading screen
-      //   return;
-      // }
-      if (user) history("/dashboard");
-    }, [
-      user,
-      // loading
-    ]);
+  const history = useNavigate();
+  if ((localStorage.getItem('user-info')) && (user)) {
+    setUser(true)
+  }
 
   let navigate = useNavigate();
   const submitHandler = (e) => {
     if (name == '' || surname == '') {
-      setError('Fill the fields')
+      setError('fields above are required')
     } else {
       e.preventDefault();
       const postData = { data: { name, surname } }
@@ -69,11 +58,14 @@ function Login() {
           <Navbar />
           <form className="form" onSubmit={submitHandler}>
             <h1>Log in</h1>
-            <input type="text" name="name" className="name" placeholder="name"
-              value={name} onChange={(e) => setName(e.target.value)} />
-            <input type="text" name="surname" className="surname" placeholder="surname"
-              value={surname} onChange={(e) => setSurname(e.target.value)} />
-            {/* <input type="password" name="password" className="password" placeholder="password" /> */}
+            <input type="text"
+              placeholder="name"
+              value={name}
+              onChange={(e) => setName(e.target.value)} />
+            <input type="text"
+              placeholder="surname"
+              value={surname}
+              onChange={(e) => setSurname(e.target.value)} />
             <input type="submit" className="login_button" value="Log in" />
 
           </form>
