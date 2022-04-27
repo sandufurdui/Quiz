@@ -9,7 +9,7 @@ import Card from "../unused comp/quizCard"
 import axios from 'axios'
 
 function Dashboard() {
-  const [user, loading, error] = useAuthState(auth);
+  const [user, setUser] = useState(true);
   const history = useNavigate();
   const [quizzes, setQuizzes] = useState([]);
   const [userId, setUserId] = useState("");
@@ -29,15 +29,9 @@ function Dashboard() {
 
   useEffect(() => {
     setUserId(localStorage.getItem("user-info"))
-    fetchQuizzes();
-  }, []);
-  useEffect(() => {
-    // if (loading) return;
     if (!user) return history("/login");
-  }, [
-    user,
-    // loading
-  ]);
+    fetchQuizzes();
+  }, [user]);
 
 
   return (

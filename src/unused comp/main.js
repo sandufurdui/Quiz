@@ -49,14 +49,6 @@ export class main extends Component {
         <div className="navbar_container">
           <Navbar />
         </div>
-        <div className="main_container">
-          <div className="row">
-            {quizes}
-
-            {/* <Submit id="3" />  */}
-          </div>
-
-        </div>
 
       </div>
     )

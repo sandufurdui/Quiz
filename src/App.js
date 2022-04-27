@@ -9,7 +9,7 @@ function App() {
     <div>
       <Router>
         <Routes>
-        {/* <Route path="/" element={<Main />}></Route> */}
+        <Route path="/" element={<Main />}></Route>
           <Route path="/login" element={<Login />}></Route>
           {/* <Route path="/register" element={<Register />}></Route> */}
           {/* <Route path="/reset" element={<Reset />}></Route> */}

@@ -1,0 +1,74 @@
+{
+    "data": {
+        "title": "General knowledge",
+        "questions": [
+            {
+                "question": "In what country is it considered a compliment to slurp loudly while eating soup?",
+                "answers": [
+                    "Japan",
+                    "Everywhere",
+                    "Irma"
+                ],
+                "correct_answer": "Japan"
+            },
+            {
+                "question": "You are in Amman, Jordan, and you are invited to go to the souk. Where will you be going?",
+                "answers": [
+                    "Park",
+                    "Mosque",
+                    "Market",
+                    "idk"
+                ],
+                "correct_answer": "Market"
+            },
+            {
+                "question": "In which country would showing up half an hour late for an invitation be considered rude?",
+                "answers": [
+                    "Panama",
+                    "Switzerland",
+                    "Moldova",
+                    "Nigeria"
+                ],
+                "correct_answer": "Switzerland"
+            },
+            {
+                "question": "If you are having dinner with a business partner in Argentina, when is it appropriate to talk business?",
+                "answers": [
+                    "Never",
+                    "After the meal is through",
+                    "Sometimes",
+                    "After some polite table conversations"
+                ],
+                "correct_answer": "After some polite table conversations"
+            },
+            {
+                "question": "In India, you are invited to a friend’s house to share a meal of rice and curry. What is the best way to eat?",
+                "answers": [
+                    "Right hand",
+                    "Both hands",
+                    "Dont eat",
+                    "Starve"
+                ],
+                "correct_answer": "Right hand"
+            },
+            {
+                "question": "In which country would you expect to see students knock on their desks after a particularly good lecture or presentation?",
+                "answers": [
+                    "IDK",
+                    "Russia",
+                    "Malasya",
+                    "Germany"
+                ],
+                "correct_answer": "Germany"
+            },
+            {
+                "question": "In many countries, it is perfectly normal for men to be physically affectionate with each other. True or False?",
+                "answers": [
+                    "True",
+                    "False"
+                ],
+                "correct_answer": "True"
+            }
+        ]
+    }
+}

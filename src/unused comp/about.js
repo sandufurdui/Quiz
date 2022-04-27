@@ -16,8 +16,7 @@ export class about extends Component {
     return (
       <>
         <Navbar />
-        {/* <Test2 /> */}
-        {/* <Test /> */}
+        <h2>This is a quiz app implemented using Quiz API to fetch data from backend</h2>
       </>
 
     )

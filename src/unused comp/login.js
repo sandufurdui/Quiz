@@ -4,62 +4,84 @@ import { auth, signInWithEmailAndPassword, signInWithGoogle } from "../firebase"
 import { useAuthState } from "react-firebase-hooks/auth";
 import Navbar from "./navbar"
 import "../style/login.css"
+import axios from 'axios'
 
 function Login() {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [user, loading, error] = useAuthState(auth);
-  const history = useNavigate();
-  useEffect(() => {
-    // if (loading) {
-    //   // maybe trigger a loading screen
-    //   return;
-    // }
-    if (user) history("/dashboard");
-  }, [
-    user, 
-    // loading
-  ]);
+  const [name, setName] = useState("")
+  const [surname, setSurname] = useState("")
+  const [error, setError] = useState('');
+  const [userId, setUserId] = useState(0)
 
+  const [user, setUser] = useState(false);
+    const history = useNavigate();
+    if ((localStorage.getItem('user-info'))&&(user)) {
+      setUser(true)
+    }
 
+    useEffect(() => {
+      // if (loading) {
+      //   // maybe trigger a loading screen
+      //   return;
+      // }
+      if (user) history("/dashboard");
+    }, [
+      user,
+      // loading
+    ]);
+
+  let navigate = useNavigate();
+  const submitHandler = (e) => {
+    if (name == '' || surname == '') {
+      setError('Fill the fields')
+    } else {
+      e.preventDefault();
+      const postData = { data: { name, surname } }
+      axios.post('https://pure-caverns-82881.herokuapp.com/api/v54/users', postData,
+        {
+          headers: {
+            "X-Access-Token": '3d12a947e8715b83faa99dd81a70bcbfdcb7871c5c77a633a07253b7d6edd2be',
+          }
+        })
+        .then((res) => {
+          console.log(res.data.id)
+          postData.data.id = res.data.id
+          setUserId(res.data.id)
+
+          localStorage.setItem("user-info", res.data.id);
+          navigate('/dashboard')
+
+        })
+        .catch((err) => {
+          console.log(err)
+          setError('User already exists!');
+
+        })
+    }
+  }
 
   return (
-    <div>
-      {user ? (
-        <div className="">
+    <>{user ? (
+      <div className="">
+      </div>
+    ) : (
+      <div className="main">
+        <div className="login-div">
+          <Navbar />
+          <form className="form" onSubmit={submitHandler}>
+            <h1>Log in</h1>
+            <input type="text" name="name" className="name" placeholder="name"
+              value={name} onChange={(e) => setName(e.target.value)} />
+            <input type="text" name="surname" className="surname" placeholder="surname"
+              value={surname} onChange={(e) => setSurname(e.target.value)} />
+            {/* <input type="password" name="password" className="password" placeholder="password" /> */}
+            <input type="submit" className="login_button" value="Log in" />
+
+          </form>
         </div>
-      ) : (
-        <div>
-          <div className="">
-            <Navbar />
-            <div className="form">
-              <h3>Login Here</h3>
-              <label>Username</label>
-              <input
-                type="text"
-                placeholder="enter your username"
-                value={email} onChange={(e) => setEmail(e.target.value)}
-                onKeyPress={event => {
-                  if (event.key === 'Enter') {
-                    signInWithEmailAndPassword(email + '@gmail.com', password)
-                  }
-                }} />
-              <label>Password</label>
-              <input
-                type="password"
-                placeholder="enter your password"
-                value={password} onChange={(e) => setPassword(e.target.value)}
-                onKeyPress={event => {
-                  if (event.key === 'Enter') {
-                    signInWithEmailAndPassword(email + '@gmail.com', password)
-                  }
-                }} />
-              <button className="login_button" onClick={() => signInWithEmailAndPassword(email + '@gmail.com', password)}>Log In</button>
-            </div>
-          </div>
-        </div>
-      )}
-    </div>
-  );
+      </div>
+    )}
+    </>
+  )
 }
+
 export default Login;

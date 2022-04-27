@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import "../style/main.css"
 import "../style/quiz.css"
-import { getDatabase, ref, child, get } from "firebase/database";
+import { getDatabase, ref, child, get, increment } from "firebase/database";
 import Question from './question'
 import arrayShuffle from 'array-shuffle';
 import axios from 'axios'
@@ -15,10 +15,10 @@ export class Quiz extends Component {
       answers: [],
       shuffledA: [],
       selected: '',
-      correctSelect: '',
+      isCorrectAnswer: false,
       id: this.props.id,
       count: 0,
-      scoreUpdated: 0
+      count1: 0
     }
   }
 
@@ -39,54 +39,55 @@ export class Quiz extends Component {
       .catch(function (error) {
         console.log(error);
       });
-
+    localStorage.setItem("score", 1)
   }
 
+  increment() {
+    this.setState({ count1: this.state.count1 + 1 })
+    console.log(this.state.count1)
+  }
 
   handleSubmit(event) {
-    // console.log(event.target.value)
-    const userIdNoRepeat = parseInt(localStorage.getItem("user-info"));
-    const userId = 1175
+    const userId = parseInt(localStorage.getItem("user-info"))
     const qId = parseInt(event.target.value);
-    // console.log("user id " + userId);
-    // console.log("question id " + qId);
-    // console.log("selected " + this.state.selected);
-    if (this.state.index < this.state.quiz.questions.length) {
-      this.setState({ 'index': this.state.index + 1 })
-      const postData = {
-        data: {
-          question_id: qId,
-          answer: this.state.selected,
-          user_id: userId,
-        },
-      };
-      console.log(postData)
-    //   axios
-    //     .post(
-    //       `https://pure-caverns-82881.herokuapp.com/api/v54/quizzes/${this.state.id}/submit`,
-    //       postData,
-    //       {
-    //         headers: {
-    //           "X-Access-Token":
-    //             "066a46e9a795771070159c29c28a763b27d1178908a9c4e4b690e8589f0b1d85",
-    //         },
-    //       }
-    //     )
-    //     .then(function (res) {
-    //       if (res.data.correctSelected) this.setState({ scoreUpdated: this.state.scoreUpdated + 1 });
-    //     })
-    //     .catch(function (error) {
-    //       console.log(error);
-    //     });
-    } else {
-
+    this.setState({ 'index': this.state.index + 1 })
+    const postData = {
+      data: {
+        question_id: qId,
+        answer: this.state.selected,
+        user_id: userId,
+      },
     };
+    axios.post(
+      `https://pure-caverns-82881.herokuapp.com/api/v54/quizzes/${this.state.id}/submit`,
+      postData,
+      {
+        headers: {
+          "X-Access-Token":
+            "3d12a947e8715b83faa99dd81a70bcbfdcb7871c5c77a633a07253b7d6edd2be",
+        },
+      }
+    )
+      .then(function (res) {
+        // this.setState({
+        //   isCorrectAnswer: res.data.correct
+        // }, )
+        const temp = parseInt(localStorage.getItem("score"))
+        // console.log(temp)
+        if (res.data.correct) {
+          localStorage.setItem("score", temp + 1);
+        }
+
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
 
   }
 
 
   handleAnswerSelected(event) {
-    // console.log(event.target.value)
+    // console.log(this.state.isCorrectAnswer)
     const t = event.target.value
     this.setState({
       selected: t
@@ -106,8 +107,8 @@ export class Quiz extends Component {
     } = this.state
     let completed = (quiz.questions && (index === quiz.questions.length)) ? true : false
     let numberOfQuestions = quiz.questions ? quiz?.questions?.length : 0
-    let score = 0
-   
+    let score = parseInt(localStorage.getItem("score"))
+
     // console.log(quiz.questions?.id)
     // console.log(index)
     // console.log(quiz.questions[index].question)
