@@ -13,7 +13,7 @@ function App() {
           <Route path="/login" element={<Login />}></Route>
           {/* <Route path="/register" element={<Register />}></Route> */}
           {/* <Route path="/reset" element={<Reset />}></Route> */}
-          <Route path="/about" element={<About />}></Route>
+          {/* <Route path="/about" element={<About />}></Route> */}
           <Route path="/dashboard" element={<Dashboard />}></Route>
         </Routes>
         {/* <Get id= "1" /> */}
