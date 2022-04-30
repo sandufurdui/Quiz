@@ -1,7 +1,5 @@
 import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { auth, signInWithEmailAndPassword, signInWithGoogle } from "../firebase";
-import { useAuthState } from "react-firebase-hooks/auth";
 import Navbar from "./navbar"
 import "../style/login.css"
 import axios from 'axios'

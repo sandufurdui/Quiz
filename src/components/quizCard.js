@@ -1,6 +1,5 @@
 import React, { Component, useState, useEffect } from 'react'
 import "../style/card.css"
-import { getDatabase, ref, set, child, get } from "firebase/database";
 import quiz from './quiz';
 import StartQuiz from "../unused comp/startQuiz"
 import axios from "axios"

@@ -1,7 +1,5 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
-import { useAuthState } from "react-firebase-hooks/auth";
-import { auth, db, logout } from "../firebase";
 import Dashboard from "./dashboard"
 import Login from './login'
 import Main from "./main"
@@ -9,8 +7,7 @@ import About from "./about"
 import Music from "./musicPlayer"
 import "../style/navbar.css"
 
-function Navbar({ logged }) {
-    const [user] = useAuthState(auth);
+function Navbar() {
     return (
         <div className="navbar_container">
             <ul className="menu-bar">

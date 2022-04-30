@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import "../style/main.css"
 import "../style/quiz.css"
-import { getDatabase, ref, child, get, increment } from "firebase/database";
 import Question from './question'
 import arrayShuffle from 'array-shuffle';
 import axios from 'axios'

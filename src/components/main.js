@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import Card from "./quizCard"
 import Navbar from "./navbar"
-import { getDatabase, ref, set, child, get } from "firebase/database";
 
 
 export class main extends Component {

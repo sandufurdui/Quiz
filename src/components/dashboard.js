@@ -3,7 +3,6 @@ import { createPortal } from "react-dom";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { useNavigate } from "react-router";
 import "../style/dashboard.css";
-import { auth, db, logout } from "../firebase";
 import Navbar from "./navbar"
 import Card from "./quizCard"
 import axios from 'axios'
