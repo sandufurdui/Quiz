@@ -14,7 +14,7 @@ function Navbar() {
                 {/* <Link className="link"  to="/">Home</Link> */}
                 <Link className="link" to="/about">About</Link>
                 {/* <Link className="link" component={Dashboard} to="/dashboard">Dashboard1</Link> */}
-                <Link className="link" to="/dashboard">Dashboard</Link>
+                {/* <Link className="link" to="/dashboard">Dashboard</Link> */}
                 <Link className="link" to="/login">Log In</Link>
 
                 <Music />
