@@ -13,24 +13,24 @@ export class main extends Component {
     // this.quiz.bind(this);
   }
   getNumOfQuizes = async () => {
-    const dbRef = ref(getDatabase());
-    get(child(dbRef, 'quizes/')).then((snapshot) => {
-      if (snapshot.exists()) {
-        const numOfQuizes = snapshot.size
-        this.setState({
-          num: numOfQuizes
-        })
-        // console.log("number of quizes: " + this.state.num)
-      } else {
-        console.log("No data available");
-      }
-    }).catch((error) => {
-      // alert.show(error);
-    });
+    // const dbRef = ref(getDatabase());
+    // get(child(dbRef, 'quizes/')).then((snapshot) => {
+    //   if (snapshot.exists()) {
+    //     const numOfQuizes = snapshot.size
+    //     this.setState({
+    //       num: numOfQuizes
+    //     })
+    //     // console.log("number of quizes: " + this.state.num)
+    //   } else {
+    //     console.log("No data available");
+    //   }
+    // }).catch((error) => {
+    //   // alert.show(error);
+    // });
   }
 
   componentDidMount = async () => {
-    this.getNumOfQuizes()
+    // this.getNumOfQuizes()
 
     // console.log(this.state.id)
     // } 

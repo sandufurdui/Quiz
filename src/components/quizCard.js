@@ -1,7 +1,7 @@
 import React, { Component, useState, useEffect } from 'react'
 import "../style/card.css"
 import quiz from './quiz';
-import StartQuiz from "../unused comp/startQuiz"
+import StartQuiz from "./startQuiz"
 import axios from "axios"
 
 export class quizCard extends Component {
